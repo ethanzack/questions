@@ -62,32 +62,32 @@ def semantic_search(query, data, vectors):
 testData = []
 
 if __name__ == "__main__":
-    print(test_similarity("what is two plus two?", "two added with two?"))
-    # while True:
-    #     inp = input("Please enter a question: \n")
-    #     inp = inp.lower()
-    #     if inp == "groups":
-    #         print(testData)
-    #         inp = input("Please enter a question: \n")
-    #
-    #     print("\n")
-    #     if testData:
-    #         found = False
-    #         for group in testData:
-    #             results = semantic_search(inp, group, sentenceFeatures(group)['outputs'])
-    #             firstEval = results[0][0]
-    #             if firstEval > .5 and firstEval <= 1:
-    #                 print("MATCHED WITH: " + str(results[0][1]) + "\nWITH CONFIDENCE " + str(firstEval) + "\n")
-    #                 print("ADDING TO GROUP: " + str(group)) # RETURN TO UI
-    #                 print("\n\n")
-    #                 group.append(inp)
-    #                 found = True
-    #                 break
-    #
-    #         if found == False:
-    #             print("MAKING NEW GROUP\n")
-    #             testData.append([inp])
-    #
-    #     else:
-    #         print("NOTHING TO COMPARE\n\n")
-    #         testData.append([inp])
+    # print(test_similarity("what is two plus two?", "two added with two?"))
+    while True:
+        inp = input("Please enter a question: \n")
+        inp = inp.lower()
+        if inp == "groups":
+            print(testData)
+            inp = input("Please enter a question: \n")
+    
+        print("\n")
+        if testData:
+            found = False
+            for group in testData:
+                results = semantic_search(inp, group, sentenceFeatures(group)['outputs'])
+                firstEval = results[0][0]
+                if firstEval > .5 and firstEval <= 1:
+                    print("MATCHED WITH: " + str(results[0][1]) + "\nWITH CONFIDENCE " + str(firstEval) + "\n")
+                    print("ADDING TO GROUP: " + str(group)) # RETURN TO UI
+                    print("\n\n")
+                    group.append(inp)
+                    found = True
+                    break
+    
+            if found == False:
+                print("MAKING NEW GROUP\n")
+                testData.append([inp])
+    
+        else:
+            print("NOTHING TO COMPARE\n\n")
+            testData.append([inp])
